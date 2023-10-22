@@ -13,25 +13,24 @@
     </Header>
 
     <Section id="citySearchBox">
-        <label for="city">Type Name of City:</label><br>
+        <label for="cityToSearch">Type Name of City:</label><br>
         <input type="text" name="cityToSearch" id="cityToSearch" placeholder="Name of the city">
-        <button.addEventListener("click", seachCity);
+        <button id="btnSearchForThisCity">Search for City</button>
+        
 
-function searchCity() {
-  document.getElementById("cityToSearch").
-}
     </Section>
 
     <Section id="recentSearches">
+        <div id="showLastCity"></div>
 
     </Section>
 
     <Section id="currentWeatherForecast">
-        
+        <div id="currentDay"></div>
         <div id="city"></div>
-        <div id="temp">°</div>
+        <div id="temp"></div>
         <div id="humidity"></div>
-        <div id="windSpeed">mph</div>
+        <div id="windSpeed"></div>
         <div id="weatherConditionIcon"></div>
     </Section>
     
@@ -41,6 +40,10 @@ function searchCity() {
     
 
     
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
+    integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U="
+    crossorigin="anonymous"></script>
 <script src="./assets/script.js"></script>
-</body>
 </html>
