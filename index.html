@@ -14,8 +14,12 @@
 
     <Section id="citySearchBox">
         <label for="city">Type Name of City:</label><br>
-        <input type="text" name="city" id="city" placeholder="Name of the city">
-        <input type="button" value="Search" name="Search">
+        <input type="text" name="cityToSearch" id="cityToSearch" placeholder="Name of the city">
+        <button.addEventListener("click", seachCity);
+
+function searchCity() {
+  document.getElementById("cityToSearch").
+}
     </Section>
 
     <Section id="recentSearches">
@@ -23,7 +27,12 @@
     </Section>
 
     <Section id="currentWeatherForecast">
-
+        
+        <div id="city"></div>
+        <div id="temp">°</div>
+        <div id="humidity"></div>
+        <div id="windSpeed">mph</div>
+        <div id="weatherConditionIcon"></div>
     </Section>
     
     <Section id="fiveDayWeatherForecast">
