@@ -14,21 +14,86 @@
     <Header>
         <h1>Get Your 5-Day Weather Forecast</h1>
     </Header>
-    <!--creating the search side of the weather app-->
     <div class="container">
-        <div class="weather-input">
-        <h3>Find the Weather for a City</h3>
-        <label for="cityToSearch">Type Name of City:</label><br>
-
+        <!--creating the search side of the weather app-->
+        <div class="weatherInput">
+        <h3>Search for a City</h3>
         <!--Do I need these for the button? name="cityToSearch" id="cityToSearch"-->
         <input 
+            id="cityInput"
             type="text" 
             placeholder="Name of the city">
         <button id="searchBtn">Search for City</button>
         </div>
-    </div>
+    
  <!--creating the current weather details.-->
- 
+        <div class="weatherData">
+          <div class="currentWeatherInfo">
+            <div class="details">
+                <h2>City and date</h2>
+                <h4>Temperature:</h4>
+                <h4>Wind:</h4>
+                <h4>Humidity:</h4>
+            </div>
+            <div class="icon">
+            <img src="" alt="weatherConditionIcon">
+            </div>
+          </div>
+
+    <!--where the 5Day forecast cards will go.-->
+<div class="futureForecast">
+    <h2>5 Day Future Forecast</h2>
+    <!--1 card for each day-->
+    <ul class="weatherCards">
+        <li class="card">
+            <h3>Date</h3>
+            <h4>icon</h4>
+            <h4>Temperature</h4>
+            <h4>Wind</h4>
+            <h4>Humidity</h4>
+        </li>
+   
+    <!--1 card for each day-->
+        <li class="card">
+            <h3>Date</h3>
+            <h4>icon</h4>
+            <h4>Temperature</h4>
+            <h4>Wind</h4>
+            <h4>Humidity</h4>
+        </li>
+
+        <!--1 card for each day-->
+        <li class="card">
+            <h3>Date</h3>
+            <h4>icon</h4>
+            <h4>Temperature</h4>
+            <h4>Wind</h4>
+            <h4>Humidity</h4>
+        </li>
+
+        <!--1 card for each day-->
+        <li class="card">
+            <h3>Date</h3>
+            <h4>icon</h4>
+            <h4>Temperature</h4>
+            <h4>Wind</h4>
+            <h4>Humidity</h4>
+        </li>
+
+        <!--1 card for each day-->
+        <li class="card">
+            <h3>Date</h3>
+            <h4>icon</h4>
+            <h4>Temperature</h4>
+            <h4>Wind</h4>
+            <h4>Humidity</h4>
+        </li>
+    </ul>
+</div>
+
+    </div>
+
+
 
 
 

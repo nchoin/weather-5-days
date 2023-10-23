@@ -5,3 +5,117 @@
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 
 }
+
+/* colors for the website*/
+:root {
+    --dkblue:#2f6d80;
+    --grey:#E1E7E0;
+    --turquoise:#6aa4b0;
+    --white:#FEFAF1;
+    --midnight: #2b4560;
+    --ltblue:#DBF5F0;
+    --lemon:#F1DA8E;
+    --yellow: #FFF4BD;
+    --green:#18a55769;
+    --crimson: rgba(220, 20, 60, 0.406);
+}
+/*setting the styles for the body and heading*/
+body{
+
+    /* background: radial-gradient(circle, rgba(47,109,128,1) 0%, rgba(219,245,240,1) 93%, rgba(225,231,224,1) 100%); */
+    background: radial-gradient(circle, rgba(225,231,224,1) 0%, rgba(219,245,240,1) 13%, rgba(47,109,128,1) 100%);
+}
+
+h1{
+   color: var(--white); 
+   padding: 15px 0;
+   text-align: center;
+   font-size: 2em;
+   background: var(--midnight);
+}
+
+/*setting the layout - all displays should be set to flex to adjust to various screen sizes*/
+
+.container{
+    display: flex;
+    padding: 30px;
+    gap: 35px;
+}
+
+/*setting the styles for the Search button and input section*/
+.weatherInput{
+    width: 250px;
+}
+.weatherInput input{
+    width:100%;
+    height:40px;
+    border-radius: 5px;
+    padding: 0 15px;
+    border: 2px solid var(--dkblue);
+    box-shadow: 3px 3px var(--midnight);
+    font-size: 1em;
+    }
+
+.weatherInput button{
+    background-color: var(--grey);
+    color: var(--midnight);
+    font-size: .8em;
+    border-radius: 5px;
+    width: 100px;
+    height: 35px;
+    padding:5px;
+    cursor:pointer;
+    margin:10px 0;
+
+
+}
+
+/*Styles for the current and 5 day forecast*/
+.weatherData{
+    width: 100%;
+}
+
+.currentWeatherInfo {
+    background: var(--midnight);
+    color: var(--grey);
+    padding: 15px 60px 15px 15px;
+    border-radius: 5px;
+    display:flex;
+    justify-content: space-between;
+
+}
+
+.currentWeatherInfo h2{
+    font-size: 1.5em;
+}
+
+.weatherData h4 {
+    margin: 10px 0;
+    font-size: 1.2em;   
+
+}
+
+.currentWeatherInfo .icon img{
+    max-width: 100px;
+
+}
+
+.futureForecast h2{
+    font-size: 1.4em;
+    padding: 10px 0;
+    text-align: center;
+    color: var(--midnight);
+    border: 1px var(--grey) solid;
+    border-radius: 5px;
+}
+
+ .weatherCards{
+    display:flex;
+    gap:20px;
+}
+.weatherCards .card{
+    list-style: none;
+    background: var(--dkblue);
+    color: var(--white);
+    padding: 10px;
+}
