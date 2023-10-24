@@ -1,11 +1,25 @@
 let citySearch = document.querySelector("#cityInput");
 const searchButton=document.querySelector("#searchBtn");
-const apiKey = "&appid=fc0cfae3b133613dbc3178be6b4c1a4d"
+const apiKey = "fc0cfae3b133613dbc3178be6b4c1a4d"
+// will use this to get the 5 day forecast
+const getWeatherDetails= function (lat, lon) {
+    const fiveDayApiUrl = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=${apiKey}`;
+
+    fetch(fiveDayApiUrl)
+        .then(function(response){
+            return response.json();
+        })
+        .then (function (data){
+            // console.log(data); Now I have to figure out how to extract the data and display it where I need it. Also need to store the information as an object and dynamically create the button to be able to relaunch the search.
+
+        });
+}
 
 const getCityCoordinates= function () {
     let cityName = citySearch.value.trim();
     if(!cityName)return //end/returns because the cityName was empty
-    const geoCodingApiUrl=`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&limit=1&${apiKey}`
+    // this api link will include the lat and lon i need to extract for the 5 day
+    const geoCodingApiUrl=`http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${apiKey}`
 
 //using the api link with my ID and the city name will get the response in the a JSON (object)format. Need to get the lat, lon and name of city from the object returned. Will use this for the 5 day weather forecast. If there is nothing in the object run the catch function which is an alert.
     fetch(geoCodingApiUrl)
@@ -13,10 +27,12 @@ const getCityCoordinates= function () {
         return response.json();
     })
     .then(function (data) {
+        // console.log(data)
         if(!data.length)return alert(`No coordinatesfound for ${cityName}`);
-        const {name, 'coord.lat', 'coord.lon'}=data[0];
-        getWeatherDetails(name,)
-    }).catch(function(){
+        const {lat, lon}=data[0];
+        getWeatherDetails(lat, lon)
+    }).catch(function(err){
+        console.error(err)
         alert("An error occured while fetching the coordinates.");
     });
 }
