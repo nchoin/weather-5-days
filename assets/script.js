@@ -1,6 +1,12 @@
 let citySearch = document.querySelector("#cityInput");
 const searchButton=document.querySelector("#searchBtn");
 const apiKey = "fc0cfae3b133613dbc3178be6b4c1a4d"
+
+// These are variables to populate the weather results. First one is current weather and the second is the 5Day forecast
+var weatherForecastEl = document.querySelector(".weatherData");
+var futureForecastEl = document.querySelector(".futureForecast");
+
+ 
 // will use this to get the 5 day forecast
 const getWeatherDetails= function (lat, lon) {
     const fiveDayApiUrl = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=${apiKey}`;
