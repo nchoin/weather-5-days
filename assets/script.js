@@ -16,7 +16,8 @@ const getWeatherDetails= function (lat, lon) {
             return response.json();
         })
         .then (function (data){
-            // console.log(data); Now I have to figure out how to extract the data and display it where I need it. Also need to store the information as an object and dynamically create the button to be able to relaunch the search.
+        
+            // Now I have to figure out how to extract the data and display it where I need it. Also need to store the information as an object and dynamically create the button to be able to relaunch the search.
 
         });
 }
