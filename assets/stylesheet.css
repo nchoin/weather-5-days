@@ -105,11 +105,10 @@ h1{
     padding: 10px 0;
     text-align: center;
     color: var(--midnight);
-    border: 1px var(--grey) solid;
-    border-radius: 5px;
+    
 }
 
- .weatherCards{
+.weatherCards{
     display:flex;
     gap:20px;
 }
@@ -118,4 +117,19 @@ h1{
     background: var(--dkblue);
     color: var(--white);
     padding: 10px;
+    width: calc(100%/5);
+
+}
+.weatherCards .card img{
+    max-width: 50px;
+    margin: 5px 0 -12px 9;
+}
+
+.weatherCards h3{
+    font-size: 1em;
+
+}
+.weatherCards h4{
+    font-size: .8em;
+   
 }
