@@ -2,23 +2,35 @@ let citySearch = document.querySelector("#cityInput");
 const searchButton=document.querySelector("#searchBtn");
 const apiKey = "fc0cfae3b133613dbc3178be6b4c1a4d"
 
-// These are variables to populate the weather results. First one is current weather and the second is the 5Day forecast
-var weatherForecastEl = document.querySelector(".weatherData");
-var futureForecastEl = document.querySelector(".futureForecast");
+// These are variables to populate the weather results. Will use these to place the weather information. 
+let weatherForecastDiv = document.querySelector(".weatherData");
+let futureForecastDiv = document.querySelector(".futureForecast");
+let currentWeatherInfoDiv = document.querySelector(".currentWeatherInfo");
+let weatherCardsDiv = document.querySelector(".weatherCards");
+let detailsDiv = document.querySelector(".details");
+
 
  
 // will use this to get the 5 day forecast
 const getWeatherDetails= function (lat, lon) {
     const fiveDayApiUrl = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=${apiKey}`;
-
+    
+    
     fetch(fiveDayApiUrl)
         .then(function(response){
             return response.json();
         })
         .then (function (data){
-        
-            // Now I have to figure out how to extract the data and display it where I need it. Also need to store the information as an object and dynamically create the button to be able to relaunch the search.
+        console.log(data);
 
+        let currentDate = document.createElement('h2');
+        currentDate.textContent=data.list[0].dt_text;
+        detailsDiv.appendChild(currentDate);
+            // Now I have to figure out how to extract the data and display it where I need it. Also need to store the information as an object and dynamically create the button to be able to relaunch the search.
+            /*for (var i=0; i<6; i++){
+            let currentCityDate = document.createElement('h2');
+            currentCityDate.textContent=data[i].
+              */  
         });
 }
 
@@ -29,12 +41,15 @@ const getCityCoordinates= function () {
     const geoCodingApiUrl=`http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${apiKey}`
 
 //using the api link with my ID and the city name will get the response in the a JSON (object)format. Need to get the lat, lon and name of city from the object returned. Will use this for the 5 day weather forecast. If there is nothing in the object run the catch function which is an alert.
+
     fetch(geoCodingApiUrl)
     .then(function(response){
         return response.json();
     })
     .then(function (data) {
-        // console.log(data)
+        console.log(data);
+        
+        
         if(!data.length)return alert(`No coordinatesfound for ${cityName}`);
         const {lat, lon}=data[0];
         getWeatherDetails(lat, lon)
@@ -42,6 +57,8 @@ const getCityCoordinates= function () {
         console.error(err)
         alert("An error occured while fetching the coordinates.");
     });
+
+
 }
 
 
