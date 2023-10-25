@@ -22,7 +22,7 @@ const getWeatherDetails= function (lat, lon) {
         })
         .then (function (data){
         console.log(data);
-
+/*adding information for current weather*/
         let currentDate = document.createElement('h2');
         currentDate.textContent=data.list[0].dt_text;
         detailsDiv.appendChild(currentDate);
