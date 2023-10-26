@@ -63,28 +63,28 @@ function initPage(){
                     */  
 
             /*Weather card. Make one and then Append?*/
-            for (i=0;i<6; i++){
+            for (i=0;i<6;i++){
                 
                 let forecastDate = document.createElement('h3');
                 forecastDate.textContent=data.list[i].dt_txt;
-                weatherForecastLi.appendChild(forecastDate);
+                weatherCardsDiv.appendChild(forecastDate);
 
                 let forecastPic = document.createElement("img");
                 forecastPic.setAttribute("src", "https://openweathermap.org/img/wn/" + data.list[i].weather[0].icon + "@2x.png");
                 forecastPic.setAttribute("alt", data.list[i].weather[0].description);
-                weatherForecastLi.appendChild(forecastPic);
+                weatherCardsDiv.appendChild(forecastPic);
     
                 let forecastTemp = document.createElement('h4');
                 forecastTemp.textContent= "Temp: " + Math.round(data.list[i].main.temp)+"°";
-                weatherForecastLi.appendChild(forecastTemp);
+                weatherCardsDiv.appendChild(forecastTemp);
     
                 let forecastWind = document.createElement('h4');
                 forecastWind.textContent="Wind Speed: " + data.list[i].wind.speed +"mph";
-                weatherForecastLi.appendChild(forecastWind);
+                weatherCardsDiv.appendChild(forecastWind);
     
                 let forecastHumidity = document.createElement('h4');
                 forecastHumidity.textContent="Humidity: " + data.list[i].main.humidity +"%";
-                weatherForecastLi.appendChild(forecastHumidity);
+                weatherCardsDiv.appendChild(forecastHumidity);
    
             }
                 
