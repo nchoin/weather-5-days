@@ -27,15 +27,13 @@ function initPage(){
             .then (function (data){
             console.log(data);
             /*adding information for current weather*/
-            // const date =data.list[0].dt_txt;
-            // const formatDate = new Intl.DateTimeFormat("en-us",{
-            // dateStyle:"full"
-            // });
-//  document.getElementById('currentDay').textContent = formatDate.format(date);
+         
+            let today = dayjs();
+
             let citySearching = document.createElement('h2');
             let currentDate = document.createElement('h2');
             citySearching.textContent=data.city.name;
-            currentDate.textContent=data.list[0].dt_txt;
+            currentDate.textContent=today.format('MMMM D, YYYY');
             detailsDiv.appendChild(citySearching);
             detailsDiv.appendChild(currentDate);
 
@@ -50,7 +48,7 @@ function initPage(){
             let currentHumidity = document.createElement('h4');
             currentHumidity.textContent="Humidity: " + data.list[0].main.humidity +"%";
             detailsDiv.appendChild(currentHumidity);
-// icon isn't appearing. Issue with the picture
+
             let currentPic = document.createElement("img");
             currentPic.setAttribute("src", "https://openweathermap.org/img/wn/" + data.list[0].weather[0].icon + "@2x.png");
             currentPic.setAttribute("alt", data.list[0].weather[0].description);
@@ -63,28 +61,35 @@ function initPage(){
                     */  
 
             /*Weather card. Make one and then Append?*/
-            for (i=0;i<6;i++){
-                
+            for (i=8;i<40;i+=8){
+                let nextDay = data.list[i].dt
+                let formattedNextDay = new Date(nextDay * 1000).toLocaleDateString()
+
                 let forecastDate = document.createElement('h3');
-                forecastDate.textContent=data.list[i].dt_txt;
+                forecastDate.textContent=formattedNextDay;
                 weatherCardsDiv.appendChild(forecastDate);
+                
 
                 let forecastPic = document.createElement("img");
                 forecastPic.setAttribute("src", "https://openweathermap.org/img/wn/" + data.list[i].weather[0].icon + "@2x.png");
                 forecastPic.setAttribute("alt", data.list[i].weather[0].description);
                 weatherCardsDiv.appendChild(forecastPic);
+                
     
                 let forecastTemp = document.createElement('h4');
                 forecastTemp.textContent= "Temp: " + Math.round(data.list[i].main.temp)+"°";
                 weatherCardsDiv.appendChild(forecastTemp);
+                
     
                 let forecastWind = document.createElement('h4');
                 forecastWind.textContent="Wind Speed: " + data.list[i].wind.speed +"mph";
                 weatherCardsDiv.appendChild(forecastWind);
+                
     
                 let forecastHumidity = document.createElement('h4');
                 forecastHumidity.textContent="Humidity: " + data.list[i].main.humidity +"%";
                 weatherCardsDiv.appendChild(forecastHumidity);
+                
    
             }
                 
@@ -98,6 +103,7 @@ function initPage(){
         const geoCodingApiUrl=`http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${apiKey}`
 
         //using the api link with my ID and the city name will get the response in the a JSON (object)format. Need to get the lat, lon and name of city from the object returned. Will use this for the 5 day weather forecast. If there is nothing in the object run the catch function which is an alert.
+        
 
         fetch(geoCodingApiUrl)
         .then(function(response){
