@@ -55,42 +55,45 @@ function initPage(){
             iconDiv.appendChild(currentPic);
 
                 /* Now I have to figure out how to extract the data and display it where I need it. Also need to store the information as an object and dynamically create the button to be able to relaunch the search.
-                /*for (var i=0; i<6; i++){
-                let currentCityDate = document.createElement('h2');
-                currentCityDate.textContent=data[i].
                     */  
 
             /*Weather card. Make one and then Append?*/
-            for (i=8;i<40;i+=8){
+            for (i=5;i<40;i+=8){
                 let nextDay = data.list[i].dt
                 let formattedNextDay = new Date(nextDay * 1000).toLocaleDateString()
-
+                
+                let card = document.createElement('div');
+            
                 let forecastDate = document.createElement('h3');
                 forecastDate.textContent=formattedNextDay;
-                weatherCardsDiv.appendChild(forecastDate);
+                // weatherCardsDiv.appendChild(forecastDate);
+                card.appendChild(forecastDate);
                 
 
                 let forecastPic = document.createElement("img");
                 forecastPic.setAttribute("src", "https://openweathermap.org/img/wn/" + data.list[i].weather[0].icon + "@2x.png");
                 forecastPic.setAttribute("alt", data.list[i].weather[0].description);
-                weatherCardsDiv.appendChild(forecastPic);
+                // weatherCardsDiv.appendChild(forecastPic);
+                card.appendChild(forecastPic);
                 
     
                 let forecastTemp = document.createElement('h4');
                 forecastTemp.textContent= "Temp: " + Math.round(data.list[i].main.temp)+"°";
-                weatherCardsDiv.appendChild(forecastTemp);
-                
+                // weatherCardsDiv.appendChild(forecastTemp);
+                card.appendChild(forecastTemp);
     
                 let forecastWind = document.createElement('h4');
                 forecastWind.textContent="Wind Speed: " + data.list[i].wind.speed +"mph";
-                weatherCardsDiv.appendChild(forecastWind);
-                
+                // weatherCardsDiv.appendChild(forecastWind);
+                card.appendChild(forecastWind);
     
                 let forecastHumidity = document.createElement('h4');
                 forecastHumidity.textContent="Humidity: " + data.list[i].main.humidity +"%";
-                weatherCardsDiv.appendChild(forecastHumidity);
+                // weatherCardsDiv.appendChild(forecastHumidity);
+                card.appendChild(forecastHumidity);
                 
-   
+                
+                weatherCardsDiv.appendChild(card);
             }
                 
             });
