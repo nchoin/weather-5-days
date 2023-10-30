@@ -63,6 +63,7 @@ function initPage(){
                 let formattedNextDay = new Date(nextDay * 1000).toLocaleDateString()
                 
                 let card = document.createElement('div');
+                card.classList.add('card');
             
                 let forecastDate = document.createElement('h3');
                 forecastDate.textContent=formattedNextDay;
@@ -92,7 +93,7 @@ function initPage(){
                 // weatherCardsDiv.appendChild(forecastHumidity);
                 card.appendChild(forecastHumidity);
                 
-                
+
                 weatherCardsDiv.appendChild(card);
             }
                 

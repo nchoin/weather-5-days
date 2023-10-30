@@ -120,6 +120,14 @@ h1{
     width: calc(100%/5);
 
 }
+.card{
+    list-style: none;
+    background: var(--dkblue);
+    color: var(--white);
+    padding: 10px;
+    width: calc(100%/5);
+
+}
 .weatherCards .card img{
     max-width: 50px;
     margin: 5px 0 -12px 9;
