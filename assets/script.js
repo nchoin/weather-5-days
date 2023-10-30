@@ -7,13 +7,15 @@ function initPage(){
     let weatherForecastDiv = document.querySelector(".weatherData");
     let futureForecastDiv = document.querySelector(".futureForecast");
     let currentWeatherInfoDiv = document.querySelector(".currentWeatherInfo");
-    let detailsDiv = document.querySelector(".details");
-    let iconDiv = document.querySelector(".icon")
+    // let detailsDiv = document.querySelector(".details");
+    // let iconDiv = document.querySelector(".icon")
     let weatherCardsDiv = document.querySelector(".weatherCards");
     let weatherForecastLi = document.querySelector(".card");
 
-
-
+    // establishing the list for local storage
+    if(localStorage.getItem('history')===null){
+    localStorage.setItem("history","");
+    };
 
     // will use this to get the 5 day forecast
     const getWeatherDetails= function (lat, lon) {
@@ -26,10 +28,14 @@ function initPage(){
             })
             .then (function (data){
             console.log(data);
-            /*adding information for current weather*/
-         
+        //    runs the function to clear previous information.
+            clearCards();
+        /*adding information for current weather*/
             let today = dayjs();
-
+            let detailsDiv = document.createElement('div');
+            let iconDiv = document.createElement('div');
+            detailsDiv.className='details';
+            iconDiv.className='icon';
             let citySearching = document.createElement('h2');
             let currentDate = document.createElement('h2');
             citySearching.textContent=data.city.name;
@@ -48,15 +54,19 @@ function initPage(){
             let currentHumidity = document.createElement('h4');
             currentHumidity.textContent="Humidity: " + data.list[0].main.humidity +"%";
             detailsDiv.appendChild(currentHumidity);
+            
+            currentWeatherInfoDiv.appendChild(detailsDiv); 
 
             let currentPic = document.createElement("img");
             currentPic.setAttribute("src", "https://openweathermap.org/img/wn/" + data.list[0].weather[0].icon + "@2x.png");
             currentPic.setAttribute("alt", data.list[0].weather[0].description);
             iconDiv.appendChild(currentPic);
-
+            
+            currentWeatherInfoDiv.appendChild(iconDiv);   
+            
                 /* Now I have to figure out how to extract the data and display it where I need it. Also need to store the information as an object and dynamically create the button to be able to relaunch the search.
                     */  
-
+            
             /*Weather card. Make one and then Append?*/
             for (i=5;i<40;i+=8){
                 let nextDay = data.list[i].dt
@@ -123,9 +133,37 @@ function initPage(){
             alert("An error occured while fetching the coordinates.");
         });
 
+        let storedCity = [];
 
+        if(localStorage.getItem('history')===null){
+        storedCity = JSON.parse(localStorage.getItem("history"));
+        }
+        storedCity.push(cityName);
+        localStorage.setItem("history",JSON.stringify(storedCity));
+        
         }
 
+        function clearCards() {
+            let oldCards = document.getElementsByClassName("card");
+            // console.log(oldCards.length);
+            // console.log(oldCards);
+            for (let j=oldCards.length -1;j>=0; j--){
+                // console.log(j);
+                // console.log(oldCards[j]);
+                oldCards[j].remove();
+            }
+         
+            let oldDetails = document.getElementsByClassName("details");
+            let oldIcon = document.getElementsByClassName("icon");  
+            console.log(oldDetails);
+            if (oldDetails.length>0) {
+                oldDetails[0].remove();
+            } 
+            if (oldIcon.length>0)  {
+                oldIcon[0].remove();
+            }     
+
+        }
     searchButton.addEventListener("click", getCityCoordinates);
 }
 
