@@ -19,7 +19,9 @@ function initPage(){
 
     // will use this to get the 5 day forecast
     const getWeatherDetails= function (lat, lon) {
-        const fiveDayApiUrl = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=${apiKey}`;
+        const fiveDayApiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=${apiKey}`;
+    // const getWeatherDetails= function (cityName) {
+    //     const fiveDayApiUrl = `http://api.openweathermap.org/data/2.5/forecast?q=${cityName}&units=imperial&appid=${apiKey}`;
 
 
         fetch(fiveDayApiUrl)
@@ -114,7 +116,7 @@ function initPage(){
         let cityName = citySearch.value.trim();
         if(!cityName)return //end/returns because the cityName was empty
         // this api link will include the lat and lon i need to extract for the 5 day
-        const geoCodingApiUrl=`http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${apiKey}`
+        const geoCodingApiUrl=`https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${apiKey}`
 
         //using the api link with my ID and the city name will get the response in the a JSON (object)format. Need to get the lat, lon and name of city from the object returned. Will use this for the 5 day weather forecast. If there is nothing in the object run the catch function which is an alert.
         
