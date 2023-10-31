@@ -12,7 +12,7 @@ I gained a better understanding of using APIs to gather data for programming.
 - [Credits](#credits)
 - [License](#license)
 ## Installation
-The weather runs via the browser and local storage. Here is the link to the [weather app](nchoin.github.io/weather-5-days/)
+The weather runs via the browser and local storage. Here is the link to the [weather app](https://nchoin.github.io/weather-5-days/)
 
 ## Usage
 All you have to do is type the city name in the search field and press search. 
