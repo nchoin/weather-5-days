@@ -17,9 +17,9 @@ The weather runs via the browser and local storage. Here is the link to the [wea
 ## Usage
 All you have to do is type the city name in the search field and press search. 
 
-This is a screenshot of the [weather on an iPad](./assets/weatheriPad.png)
+This is a screenshot of the ![weather on an iPad](./assets/weatheriPad.png)
 
-This is a screenshot of the [weather on Hub](./assets/weatherOnHub.png)
+This is a screenshot of the ![weather on Hub](./assets/weatherOnHub.png)
 
 
 ## Credits
